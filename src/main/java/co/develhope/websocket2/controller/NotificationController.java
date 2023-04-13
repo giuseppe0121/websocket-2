@@ -25,14 +25,14 @@ public class NotificationController {
     }
 
 
-    @MessageMapping("/message")
-    @SendTo("/client-message")
+    @MessageMapping("/client-message")
+    @SendTo("/topic/broadcast")
     public MessageDTO sendMessage(ClientMessageDTO clientMessageDTO){
         //MessageDTO messageDTO = new MessageDTO();
         //messageDTO.setSender(clientMessageDTO.getClientName());
         //messageDTO.setType(clientMessageDTO.getClientAlert());
         //messageDTO.setMessage(clientMessageDTO.getClientMsg());
-        return new MessageDTO("sender "+ clientMessageDTO.getClientName(),clientMessageDTO.getClientAlert(), clientMessageDTO.getClientMsg());
+        return new MessageDTO(clientMessageDTO.getClientName(),clientMessageDTO.getClientAlert(), clientMessageDTO.getClientMsg());
     }
 
 }
